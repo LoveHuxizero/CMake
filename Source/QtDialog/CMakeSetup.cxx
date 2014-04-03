@@ -78,7 +78,12 @@ int main(int argc, char** argv)
     }
 
   QApplication app(argc, argv);
-
+#ifdef _WIN32
+  QFont font;
+  font.setPointSize(9);
+  font.setFamily("Microsoft Yahei UI");
+  app.setFont(font);
+#endif
 #if defined(CMAKE_ENCODING_UTF8)
   QTextCodec* utf8_codec = QTextCodec::codecForName("UTF-8");
   QTextCodec::setCodecForLocale(utf8_codec);
